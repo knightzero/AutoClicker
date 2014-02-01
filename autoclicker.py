@@ -12,6 +12,7 @@ def mouseClick(timer):
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,x,y,0,0) 
     time.sleep(timer) 
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,x,y,0,0) 
+    time.sleep(timer) 
 
 def EVT_RESULT(win, func):
     """Define Result Event."""
