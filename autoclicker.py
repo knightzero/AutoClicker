@@ -73,9 +73,6 @@ class Frame1(wx.Frame):
             win32con.MOD_ALT, #the modifier key
             win32con.VK_F1) #the key to watch for
     def handleHotKey(self, evt):
-        """
-        Prints a simple message when a hotkey event is received.
-        """
         self.autoClick = not self.autoClick
         if self.autoClick:
             self.worker = WorkerThread(self, float(1/float(self.slider1.GetValue())))
