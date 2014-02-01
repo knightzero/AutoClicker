@@ -5,12 +5,12 @@ from threading import *
 import time
 EVT_RESULT_ID = wx.NewId()
 
-def mouseClick():
+def mouseClick(timer):
     print "Click!"
     x,y = win32api.GetCursorPos()
     win32api.SetCursorPos((x, y))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,x,y,0,0) 
-    time.sleep(0.05) 
+    time.sleep(timer) 
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,x,y,0,0) 
 
 def EVT_RESULT(win, func):
@@ -39,9 +39,8 @@ class WorkerThread(Thread):
             if self._want_abort:
                 wx.PostEvent(self._notify_window, ResultEvent(None))
                 return
-            mouseClick()
+            mouseClick(self.timer)
             print self.timer
-            time.sleep(self.timer)
         
     def abort(self):
         self._want_abort = True
